@@ -82,6 +82,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
      Route::prefix('subscription')->group(function () {
         Route::get('/plans', [SubscriptionController::class, 'plans'])->name('subscription.plans');
         Route::post('/subscribe/{productId}', [SubscriptionController::class, 'subscribe'])->name('subscription.subscribe');
+        Route::post('/create-payment-intent', [SubscriptionController::class, 'createPaymentIntent'])->name('subscription.createPaymentIntent');
+        Route::post('/process-payment', [SubscriptionController::class, 'processPayment']);
+        Route::post("/checkout", [SubscriptionController::class, 'checkout'])->name('subscription.checkout');
         // Route::post('/resume', [SubscriptionController::class, 'resume'])->name('subscription.resume');
         // Route::post('/cancel', [SubscriptionController::class, 'cancel'])->name('subscription.cancel');
         // Route::post('/swap', [SubscriptionController::class, 'swap'])->name('subscription.swap');
